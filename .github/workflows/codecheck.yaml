@@ -1,0 +1,35 @@
+name: Code formatting and typing
+
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  format_and_check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+        cache: 'pip'
+
+    - name: Install tools
+      run: |
+        pip install ruff mypy
+
+    - name: Ruff code check
+      run: ruff check .
+
+    - name: Ruff format code
+      run: ruff format .
+
+    - name: Mypy typing check
+      run: mypy .
