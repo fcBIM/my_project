@@ -1,0 +1,4 @@
+[core]
+    remote = storage
+['remote "storage"']
+    url = gs://ce8db57e0e1a15496b2461f48db251887178ff24
